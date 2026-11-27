@@ -4,91 +4,270 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LearnSphere - Learn and Grow</title>
+<title>LearnSphere – Learn Beyond Limits</title>
 <style>
+:root{
+  --bg:#080d1c;--panel:#111b32;--panel2:#172440;
+  --text:#f4f7ff;--muted:#aab7d0;--blue:#6c8cff;
+  --cyan:#42d9e8;--purple:#a77bff;--border:#293958;
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f7ff;color:#17233b}
-header{background:#fff;padding:17px 6%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px #ddd}
-.logo{font-size:25px;font-weight:bold;color:#356df3}
-button{cursor:pointer;border:0;border-radius:9px;padding:11px 16px;background:#356df3;color:white;font-weight:bold}
-.hero{background:linear-gradient(120deg,#14213d,#356df3);color:white;padding:65px 8%;text-align:center}
-.hero h1{font-size:38px;margin:10px}
-.hero p{font-size:17px}
-.container{max-width:1050px;margin:35px auto;padding:0 18px}
-h2{color:#172e59}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:15px}
-.card{background:white;padding:22px 12px;border-radius:15px;text-align:center;box-shadow:0 3px 12px #ddd}
-.card .emoji{font-size:38px}
-.card h3{color:#2855bb}
-.card p{font-size:13px;color:#667}
-.lesson{background:white;padding:24px;border-radius:15px;margin-top:20px}
-.heart{font-size:65px;text-align:center;animation:beat 1s infinite}
-@keyframes beat{50%{transform:scale(1.15)}}
-.quiz{background:#edf2ff;padding:18px;border-radius:12px;margin-top:15px}
-.quiz button{margin:5px}
-footer{text-align:center;background:#14213d;color:white;padding:25px;margin-top:40px}
-@media(max-width:500px){.hero h1{font-size:29px}}
+body{
+  margin:0;background:radial-gradient(circle at 15% 0%,#17254b 0,transparent 35%),var(--bg);
+  color:var(--text);font-family:Arial,sans-serif;min-height:100vh;
+}
+header{
+  position:sticky;top:0;z-index:10;background:#0a1122ed;
+  border-bottom:1px solid var(--border);backdrop-filter:blur(12px);
+  padding:13px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.logo{font-size:22px;font-weight:900;letter-spacing:.3px}
+.logo span{color:var(--cyan)}
+nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+button{
+  color:var(--text);font-weight:700;cursor:pointer;font-size:14px;
+  border:1px solid var(--border);background:var(--panel2);
+  border-radius:12px;padding:10px 14px;transition:.2s;
+}
+button:hover{border-color:var(--cyan);transform:translateY(-2px)}
+button:active{transform:translateY(1px)}
+.primary{background:linear-gradient(120deg,#536ff0,#8b61df);border:0}
+main{max-width:1150px;margin:auto;padding:30px 18px 60px}
+.hero{
+  padding:45px 25px;border:1px solid #34466b;border-radius:25px;
+  background:linear-gradient(130deg,#172c55,#182047 60%,#30204e);
+  box-shadow:0 15px 35px #0007;text-align:center;position:relative;overflow:hidden;
+}
+.hero:after{
+  content:"";position:absolute;width:220px;height:220px;border-radius:50%;
+  background:#5d8bff22;right:-60px;top:-100px;
+}
+.tag{color:var(--cyan);font-weight:bold;letter-spacing:2px;font-size:12px}
+h1{font-size:clamp(32px,6vw,55px);margin:15px 0}
+.hero p{color:#c5d1e9;line-height:1.7;max-width:650px;margin:0 auto 22px}
+.section-title{font-size:25px;margin:35px 0 8px}
+.sub{color:var(--muted);margin:0 0 18px;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:17px}
+.tile{
+  text-align:left;min-height:150px;padding:20px;border-radius:18px;
+  background:linear-gradient(145deg,#192846,#101a30);
+  border:1px solid #344766;box-shadow:0 8px 0 #080e1c,0 13px 25px #0005;
+  transition:.2s;display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+}
+.tile:hover{transform:translateY(-5px);box-shadow:0 12px 0 #080e1c,0 18px 28px #0006}
+.tile .emoji{font-size:32px}
+.tile strong{font-size:18px}
+.tile small{color:var(--muted);line-height:1.4;font-weight:400}
+.panel{
+  background:var(--panel);border:1px solid var(--border);border-radius:20px;
+  padding:22px;margin-top:22px;
+}
+select,input{
+  width:100%;padding:13px;border-radius:11px;border:1px solid var(--border);
+  background:#0b1428;color:white;font-size:15px;margin:7px 0 14px;
+}
+label{display:block;color:#c6d2e9;font-size:14px;margin-top:8px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+.lesson{
+  background:#101c34;border:1px solid var(--border);border-radius:16px;
+  padding:18px;margin:13px 0;line-height:1.7;
+}
+.lesson h3{margin-top:0;color:var(--cyan)}
+.question{font-size:17px;font-weight:bold;margin:14px 0}
+.option{display:block;width:100%;text-align:left;margin:9px 0}
+#message{color:var(--cyan);font-weight:bold;margin-top:12px}
+footer{text-align:center;padding:25px;color:#8190ac;border-top:1px solid var(--border)}
+.hidden{display:none}
+.back{margin-bottom:20px}
+@media(max-width:600px){
+ header{align-items:flex-start;flex-direction:column}
+ nav{justify-content:flex-start}
+ nav button{padding:8px 10px;font-size:12px}
+ main{padding:20px 13px 45px}
+ .hero{padding:35px 17px}
+ .tile{min-height:130px}
+}
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">LearnSphere 🌐</div>
-<button onclick="changeLanguage()" id="lang">हिंदी</button>
+  <div class="logo">Learn<span>Sphere</span> 🌐</div>
+  <nav>
+    <button onclick="showHome()">Home</button>
+    <button onclick="showPage('explore')">Explore</button>
+    <button onclick="showPage('quiz')">Quiz</button>
+    <button onclick="toggleLanguage()" id="langBtn">हिंदी</button>
+  </nav>
 </header>
 
-<section class="hero">
-<h1 id="title">Learning Made Easy!</h1>
-<p id="subtitle">Learn through Animation, Videos and Interactive Models.</p>
-<button onclick="document.getElementById('subjects').scrollIntoView()">Explore Subjects ↓</button>
-</section>
-
-<div class="container" id="subjects">
-<h2 id="heading">Explore Subjects 📚</h2>
-<div class="grid">
-<div class="card"><div class="emoji">🔬</div><h3>Science</h3><p>Learn through experiments</p></div>
-<div class="card"><div class="emoji">📐</div><h3>Mathematics</h3><p>Understand with visuals</p></div>
-<div class="card"><div class="emoji">🌍</div><h3>Social Science</h3><p>Explore our world</p></div>
-<div class="card"><div class="emoji">📖</div><h3>English</h3><p>Learn language skills</p></div>
-<div class="card"><div class="emoji">💻</div><h3>Computer</h3><p>Explore technology</p></div>
-<div class="card"><div class="emoji">💡</div><h3>General Knowledge</h3><p>Discover new things</p></div>
-</div>
-
-<h2>Try a Mini Lesson ❤️</h2>
-<div class="lesson">
-<h3>How does the Human Heart work?</h3>
-<div class="heart">❤️</div>
-<p>The heart pumps blood throughout our body. Blood carries oxygen and nutrients to different parts of the body.</p>
-<div class="quiz">
-<b>Quick Quiz: What does the heart do?</b><br><br>
-<button onclick="check(true)">Pumps Blood</button>
-<button onclick="check(false)">Digests Food</button>
-<button onclick="check(false)">Makes Bones</button>
-<p id="result"></p>
-</div>
-</div>
-</div>
+<main>
+<div id="app"></div>
+</main>
 
 <footer>
-<h3>LearnSphere</h3>
-<p>Learn • Explore • Grow</p>
-<p>Made for curious learners ❤️</p>
+  <strong>LearnSphere</strong> · Learn Beyond Limits<br>
+  <small>Made for curious minds. Keep learning, keep growing.</small>
 </footer>
 
 <script>
 let hindi=false;
-function changeLanguage(){
-hindi=!hindi;
-document.getElementById("lang").innerText=hindi?"English":"हिंदी";
-document.getElementById("title").innerText=hindi?"सीखना हुआ आसान!":"Learning Made Easy!";
-document.getElementById("subtitle").innerText=hindi?"एनिमेशन, वीडियो और मॉडल से सीखें।":"Learn through Animation, Videos and Interactive Models.";
-document.getElementById("heading").innerText=hindi?"विषय चुनें 📚":"Explore Subjects 📚";
-}
-function check(correct){
-document.getElementById("result").innerText=correct?"Correct Answer! 🎉":"Try Again! 😊";
-}
-</script>
+let selectedClass="Class 10";
+let selectedSubject="Science";
 
+const subjects=[
+ ["🔬","Science","Explore the world of science"],
+ ["➗","Mathematics","Understand numbers and logic"],
+ ["🌍","Social Science","Discover history and geography"],
+ ["📖","English","Improve language and communication"],
+ ["💻","Computer","Learn technology and coding"],
+ ["🧠","General Knowledge","Build your knowledge"]
+];
+
+function showHome(){
+ document.getElementById("app").innerHTML=`
+ <section class="hero">
+  <div class="tag">WELCOME TO THE FUTURE OF LEARNING</div>
+  <h1>${hindi?"सीखें, समझें और आगे बढ़ें":"Learn Beyond Limits"}</h1>
+  <p>${hindi?"एक ऐसी जगह जहाँ पढ़ाई आसान, मजेदार और interactive बनती है।":"A learning platform where difficult topics become simple through lessons, visuals and quizzes."}</p>
+  <button class="primary" onclick="showPage('explore')">${hindi?"पढ़ाई शुरू करें":"Start Learning"} →</button>
+ </section>
+
+ <h2 class="section-title">${hindi?"आप क्या सीखना चाहते हैं?":"What do you want to learn?"}</h2>
+ <p class="sub">${hindi?"अपनी पसंद का विकल्प चुनें।":"Choose an option to get started."}</p>
+ <div class="grid">
+  <button class="tile" onclick="showPage('explore')"><span class="emoji">📚</span><strong>${hindi?"विषय पढ़ें":"Explore Subjects"}</strong><small>${hindi?"अपनी कक्षा और विषय चुनें":"Choose your class and subject"}</small></button>
+  <button class="tile" onclick="showPage('lessons')"><span class="emoji">🎬</span><strong>${hindi?"इंटरैक्टिव पाठ":"Interactive Lessons"}</strong><small>${hindi?"आसान तरीके से concepts समझें":"Understand concepts step by step"}</small></button>
+  <button class="tile" onclick="showPage('quiz')"><span class="emoji">🧩</span><strong>${hindi?"क्विज़ और अभ्यास":"Quiz & Practice"}</strong><small>${hindi?"अपनी जानकारी जाँचें":"Test what you have learned"}</small></button>
+  <button class="tile" onclick="showPage('about')"><span class="emoji">🚀</span><strong>${hindi?"हमारे बारे में":"About LearnSphere"}</strong><small>${hindi?"हमारे learning mission को जानें":"Discover our learning mission"}</small></button>
+ </div>
+
+ <h2 class="section-title">${hindi?"लोकप्रिय विषय":"Popular Subjects"}</h2>
+ <p class="sub">${hindi?"किसी विषय पर क्लिक करके आगे बढ़ें।":"Select a subject to begin exploring."}</p>
+ <div class="grid">
+ ${subjects.map(s=>`<button class="tile" onclick="openSubject('${s[1]}')"><span class="emoji">${s[0]}</span><strong>${hindi?translate(s[1]):s[1]}</strong><small>${s[2]}</small></button>`).join("")}
+ </div>
+ `;
+}
+
+function showPage(page){
+ const app=document.getElementById("app");
+ if(page==="explore"){
+ app.innerHTML=`
+ <button class="back" onclick="showHome()">← Back to Home</button>
+ <h1>${hindi?"अपनी पढ़ाई चुनें":"Explore Learning"}</h1>
+ <p class="sub">${hindi?"अपनी कक्षा और विषय चुनें।":"Select your class and subject."}</p>
+ <div class="panel">
+  <label>${hindi?"कक्षा चुनें":"Select Class"}</label>
+  <select id="classSelect" onchange="selectedClass=this.value">
+   ${Array.from({length:7},(_,i)=>`<option ${selectedClass==="Class "+(i+6)?"selected":""}>Class ${i+6}</option>`).join("")}
+  </select>
+  <label>${hindi?"विषय चुनें":"Select Subject"}</label>
+  <select id="subjectSelect" onchange="selectedSubject=this.value">
+   ${subjects.map(s=>`<option ${selectedSubject===s[1]?"selected":""}>${s[1]}</option>`).join("")}
+  </select>
+  <button class="primary" onclick="openSubject(document.getElementById('subjectSelect').value)">Continue →</button>
+ </div>
+ <h2 class="section-title">${hindi?"सभी विषय":"All Subjects"}</h2>
+ <div class="grid">${subjects.map(s=>`<button class="tile" onclick="openSubject('${s[1]}')"><span class="emoji">${s[0]}</span><strong>${hindi?translate(s[1]):s[1]}</strong><small>${s[2]}</small></button>`).join("")}</div>`;
+ }
+ else if(page==="lessons"){
+ app.innerHTML=`
+ <button class="back" onclick="showHome()">← Back to Home</button>
+ <h1>🎬 ${hindi?"इंटरैक्टिव लर्निंग":"Interactive Learning"}</h1>
+ <p class="sub">${hindi?"सीखने के अलग-अलग तरीके":"Different ways to understand a topic."}</p>
+ <div class="grid">
+  <button class="tile" onclick="openSubject('Science')"><span class="emoji">🎞️</span><strong>Visual Lessons</strong><small>Learn with visual explanations</small></button>
+  <button class="tile" onclick="openSubject('Mathematics')"><span class="emoji">🧮</span><strong>Practice Models</strong><small>Understand through examples</small></button>
+  <button class="tile" onclick="openSubject('Social Science')"><span class="emoji">🗺️</span><strong>Diagrams & Maps</strong><small>Explore concepts visually</small></button>
+ </div>
+ <div class="panel"><h3>More learning features coming soon!</h3><p class="sub">Animated lessons, videos, interactive models and chapter-wise learning resources will be added step by step.</p></div>`;
+ }
+ else if(page==="quiz"){showQuiz();}
+ else if(page==="about"){
+ app.innerHTML=`
+ <button class="back" onclick="showHome()">← Back to Home</button>
+ <section class="hero"><div class="tag">OUR MISSION</div><h1>About LearnSphere</h1>
+ <p>LearnSphere is a student-focused learning platform designed to make education easier, more engaging and accessible.</p></section>
+ <div class="panel"><h2>Our Vision 🌟</h2><p class="sub">To help students learn through simple explanations, visual learning, practice and curiosity.</p>
+ <h2>Our Goal 🎯</h2><p class="sub">Build a useful learning space for students across different classes, subjects and boards.</p></div>`;
+ }
+}
+
+function openSubject(subject){
+ selectedSubject=subject;
+ document.getElementById("app").innerHTML=`
+ <button class="back" onclick="showPage('explore')">← Back to Subjects</button>
+ <section class="hero"><div class="tag">${selectedClass.toUpperCase()}</div><h1>${subject}</h1>
+ <p>Welcome to ${subject}. Choose a learning activity below.</p></section>
+ <h2 class="section-title">Learning options</h2>
+ <div class="grid">
+  <button class="tile" onclick="showChapterInfo('Chapter-wise Notes')"><span class="emoji">📝</span><strong>Chapter-wise Notes</strong><small>Simple and easy explanations</small></button>
+  <button class="tile" onclick="showChapterInfo('Visual Learning')"><span class="emoji">🎨</span><strong>Visual Learning</strong><small>Diagrams and visual concepts</small></button>
+  <button class="tile" onclick="showChapterInfo('Practice Questions')"><span class="emoji">✍️</span><strong>Practice Questions</strong><small>Improve your understanding</small></button>
+  <button class="tile" onclick="showPage('quiz')"><span class="emoji">🧩</span><strong>Take a Quiz</strong><small>Test your knowledge</small></button>
+ </div>
+ <div id="chapterInfo" class="panel"><h3>Start exploring!</h3><p class="sub">Select a learning option above.</p></div>`;
+}
+
+function showChapterInfo(type){
+ document.getElementById("chapterInfo").innerHTML=`
+ <h3>${type}</h3>
+ <p class="sub">This section is ready for learning content. Chapter-wise study material will be added in upcoming updates.</p>
+ <p><strong>Selected:</strong> ${selectedClass} · ${selectedSubject}</p>`;
+}
+
+const quizQuestions=[
+ {q:"Which planet is known as the Red Planet?",a:["Earth","Mars","Jupiter","Venus"],correct:1,why:"Mars is called the Red Planet because of its reddish appearance."},
+ {q:"What is 12 × 8?",a:["84","92","96","108"],correct:2,why:"12 multiplied by 8 equals 96."},
+ {q:"Which gas do plants absorb from the air?",a:["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],correct:1,why:"Plants use carbon dioxide during photosynthesis."}
+];
+let qIndex=0,score=0;
+function showQuiz(){
+ qIndex=0;score=0;renderQuestion();
+}
+function renderQuestion(){
+ const app=document.getElementById("app");
+ if(qIndex>=quizQuestions.length){
+ app.innerHTML=`<button class="back" onclick="showHome()">← Home</button>
+ <div class="hero"><div class="tag">QUIZ COMPLETED</div><h1>🎉 Great Work!</h1>
+ <h2>Your score: ${score} / ${quizQuestions.length}</h2>
+ <p>${score===3?"Excellent! Perfect score.":"Good effort! Keep learning and try again."}</p>
+ <button class="primary" onclick="showQuiz()">Try Again</button></div>`;
+ return;
+ }
+ let q=quizQuestions[qIndex];
+ app.innerHTML=`<button class="back" onclick="showHome()">← Back to Home</button>
+ <h1>🧩 Quick Quiz</h1><p class="sub">Question ${qIndex+1} of ${quizQuestions.length}</p>
+ <div class="panel"><div class="question">${q.q}</div>
+ ${q.a.map((a,i)=>`<button class="option" onclick="answer(${i})">${a}</button>`).join("")}
+ <div id="message"></div></div>`;
+}
+function answer(choice){
+ const q=quizQuestions[qIndex];
+ const msg=document.getElementById("message");
+ if(!msg||msg.dataset.done)return;
+ msg.dataset.done="yes";
+ if(choice===q.correct){score++;msg.innerHTML="✅ Correct! "+q.why;}
+ else{msg.innerHTML="❌ Not quite. Correct answer: "+q.a[q.correct]+". "+q.why;}
+ document.querySelectorAll(".option").forEach(b=>b.disabled=true);
+ const next=document.createElement("button");
+ next.className="primary";next.textContent="Next Question →";
+ next.style.marginTop="15px";next.onclick=()=>{qIndex++;renderQuestion();};
+ msg.after(next);
+}
+
+function translate(word){
+ const dict={"Science":"विज्ञान","Mathematics":"गणित","Social Science":"सामाजिक विज्ञान","English":"अंग्रेज़ी","Computer":"कंप्यूटर","General Knowledge":"सामान्य ज्ञान"};
+ return dict[word]||word;
+}
+function toggleLanguage(){
+ hindi=!hindi;
+ document.getElementById("langBtn").textContent=hindi?"English":"हिंदी";
+ showHome();
+}
+showHome();
+</script>
 </body>
   </html>
-                    
+  
